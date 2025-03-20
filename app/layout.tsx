@@ -34,8 +34,8 @@ export default function RootLayout({
 						<div className="flex gap-4 items-center flex-col sm:flex-row">
 							<h2 className="text-4xl font-bold">PokeDir</h2>
 						</div>
-					{children}
-          </main>
+						{children}
+					</main>
 				</ThemeProvider>
 			</body>
 		</html>
