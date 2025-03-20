@@ -1,46 +1,62 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Label } from "./ui/label";
 import { PokemonCard } from "./pokemon-card";
-
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { getManyPokemon, type ManyPokemonResponse } from "@/lib/api";
+// import { parseAsInteger, useQueryState } from "nuqs";
+import { useSearchParams } from "next/navigation";
 interface PokemonGridProps {
-	manyPokemon: { name: string; url: string }[];
+	manyPokemon: { name: string; url: string; img: string }[];
 }
 
 export function PokemonGrid({ manyPokemon }: PokemonGridProps) {
-	const [searchText, setSearchText] = useState("");
+	const [pokemon, setPokemon] =
+		useState<{ name: string; url: string; img: string }[]>(manyPokemon);
+	const [offset, setOffset] = useState<number>(24);
 
-	console.log(manyPokemon);
 
-	const filter = (list: { name: string; url: string }[], text: string) => {
-		return list.filter((pokemon) =>
-			pokemon.name.toLowerCase().includes(text.toLowerCase()),
-		);
-	};
+	useEffect(() => {
+		const fetchManyPokemon = async () => {
 
-	const filteredPokemon = filter(manyPokemon, searchText);
+			console.log({
+				limit: 8,
+				offset: offset,
+			});
+
+			const manyMorePokemon = await getManyPokemon({
+				limit: 8,
+				offset: offset,
+			});
+
+			setPokemon(manyMorePokemon.results);
+		};
+
+		fetchManyPokemon();
+	}, [offset]);
 
 	return (
 		<>
 			<div>
-				<h3 className="text-2xl py-6 text-center">Find your Pokemon</h3>
-				<div className="grid w-full max-width-sm items-center gap-1.5">
-					<Label htmlFor="pokemonName">Pokemon Name</Label>
-					<input
-						id="pokemonName"
-						type="text"
-						value={searchText}
-						placeholder="pikachu"
-						onChange={(e) => setSearchText(e.target.value)}
-					/>
-				</div>
-				<h3 className="text=3x; pt-12 pb-6 text-center">Results</h3>
+				<h1 className="text-4xl py-6 text-center pb-10">Find your Pokemon</h1>
 			</div>
-			<div className="mb-32 grid text-center lg:mb-0 m-3 lg:grid-cols-4 lg:text-left">
-				{filteredPokemon.map((pokemon) => (
-					<PokemonCard name={pokemon.name} key={pokemon.name} />
+			<div className="pt-10 mb-32 grid text-center lg:mb-0 m-3 lg:grid-cols-8 lg:text-left">
+				{pokemon.map((pokemon) => (
+					<PokemonCard
+						name={pokemon.name}
+						key={pokemon.name}
+						url={pokemon.url}
+						img={pokemon.img}
+					/>
 				))}
 			</div>
+        <Button type="submit" onClick={() => setOffset(offset + 24)}>
+					Back
+				</Button>
+				<Button type="submit" onClick={() => setOffset(offset - 24)}>
+					Next
+				</Button>
 		</>
 	);
 }

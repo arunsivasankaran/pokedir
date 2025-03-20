@@ -1,23 +1,53 @@
+import { PokemonImage } from "@/components/pokemon-image";
+import { Progress } from "@/components/ui/progress";
+import {
+	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table";
 import { getPokemon } from "@/lib/api";
-import Image from "next/image";
 
 export default async function PokemonPage({
 	params,
 }: { params: { pokemonName: string } }) {
-	const pokemonName = params.pokemonName;
-	const pokemonDetails = await getPokemon(params.pokemonName);
-
-	console.log(pokemonDetails);
+	const pokemonName = (await params).pokemonName;
+	const pokemonDetails = await getPokemon(pokemonName);
 
 	return (
-		<div>
+		<>
 			<h1 className="text=4xl text-bold pt-4">{pokemonName}</h1>
-			<Image
-				src={pokemonDetails.sprites.front_default}
-				alt={pokemonName}
-				width={200}
-				height={200}
-			/>
-		</div>
+			<div
+				className="m-4"
+				style={{ width: "400px", height: "400px", position: "relative" }}
+			>
+				<PokemonImage
+					image={pokemonDetails.sprites.other["official-artwork"].front_default}
+					name={pokemonName}
+				/>
+			</div>
+			<h3 className="flex-col">
+				<Table>
+					<TableCaption>Stats</TableCaption>
+					<TableHeader>
+						<TableRow>
+							<TableHead className="w-[300px]">Stat</TableHead>
+							<TableHead className="text-right">Value</TableHead>
+						</TableRow>
+					</TableHeader>
+					<TableBody>
+						{pokemonDetails.stats.map((stat) => (
+							<TableRow key={stat.stat.name}>
+								<TableCell className="font-medium">{stat.stat.name}</TableCell>
+								<TableCell className="text-right">{stat.base_stat}</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</h3>
+		</>
 	);
 }
