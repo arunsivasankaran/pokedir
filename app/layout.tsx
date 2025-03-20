@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import Link from "next/link";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -32,7 +33,9 @@ export default function RootLayout({
 				<ThemeProvider attribute="class" defaultTheme="dark">
 					<main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
 						<div className="flex gap-4 items-center flex-col sm:flex-row">
-							<h2 className="text-4xl font-bold">PokeDir</h2>
+							<Link href="/">
+								<h2 className="text-4xl font-bold">PokeDir</h2>
+							</Link>
 						</div>
 						{children}
 					</main>
