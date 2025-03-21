@@ -1,5 +1,4 @@
 import { PokemonImage } from "@/components/pokemon-image";
-import { Progress } from "@/components/ui/progress";
 import {
 	Table,
 	TableBody,
@@ -27,7 +26,7 @@ export default async function PokemonPage({
 				<PokemonImage
 					image={
 						pokemonDetails.sprites.other?.["official-artwork"]?.front_default ||
-						"https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png"
+						"/not-found.png"
 					}
 					name={pokemonName}
 				/>

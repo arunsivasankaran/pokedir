@@ -7,13 +7,12 @@ export function PokemonImage({ image, name }: { image: string; name: string }) {
 	return (
 		<ImageWithFallback
 			src={image}
-			fallbackSrc="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png"
+      fallbackSrc="/not-found.svg"
 			alt={name}
 			priority
 			fill
 			style={{ objectFit: "contain" }}
 			className="transition-opacity duration-500 group-hover:opacity-100"
-			// onLoadingComplete={(image) => image.classList.remove("opacity-0")}
 		/>
 	);
 }
