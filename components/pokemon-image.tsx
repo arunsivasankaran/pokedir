@@ -7,7 +7,7 @@ export function PokemonImage({ image, name }: { image: string; name: string }) {
 	return (
 		<ImageWithFallback
 			src={image}
-      fallbackSrc="/not-found.svg"
+			fallbackSrc="/not-found.svg"
 			alt={name}
 			priority
 			fill

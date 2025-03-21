@@ -19,7 +19,6 @@ export function PokemonGrid({ manyPokemon }: PokemonGridProps) {
 
 	useEffect(() => {
 		const fetchManyPokemon = async () => {
-
 			const manyMorePokemon = await getManyPokemon({
 				limit: 12,
 				offset: offset,
