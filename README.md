@@ -2,10 +2,9 @@
 
 ## TODO
 
-- [] caching
+- [] caching - need to investigate default cache setting and possibly update some settings
 - [] tests
-- [] server side rendering
-- [] static side generation
+- [] investigate SSR and SSG benefits
 
 ## Stack
 
