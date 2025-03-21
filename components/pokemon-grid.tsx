@@ -15,6 +15,7 @@ export function PokemonGrid({ manyPokemon }: PokemonGridProps) {
 	const [pokemon, setPokemon] =
 		useState<{ name: string; url: string; img: string }[]>(manyPokemon);
 	const [offset, setOffset] = useState<number>(12);
+	const [count, setCount] = useState<number>(0);
 
 	useEffect(() => {
 		const fetchManyPokemon = async () => {
@@ -27,6 +28,8 @@ export function PokemonGrid({ manyPokemon }: PokemonGridProps) {
 				limit: 12,
 				offset: offset,
 			});
+
+			setCount(manyMorePokemon.count);
 
 			setPokemon(manyMorePokemon.results);
 		};
@@ -46,12 +49,25 @@ export function PokemonGrid({ manyPokemon }: PokemonGridProps) {
 					/>
 				))}
 			</div>
-			<Button type="submit" onClick={() => setOffset(offset + 12)}>
-				Back
-			</Button>
-			<Button type="submit" onClick={() => setOffset(offset - 12)}>
-				Next
-			</Button>
+
+			<div className="justify-center grid lg:mb-3 lg:grid-cols-2 pt-10 gap-2">
+				<Button
+					type="submit"
+					onClick={() =>
+						offset - 12 > 0 ? setOffset(offset - 12) : setOffset(count - 12)
+					}
+				>
+					Back
+				</Button>
+				<Button
+					type="submit"
+					onClick={() =>
+						offset + 12 < count ? setOffset(offset + 12) : setOffset(0)
+					}
+				>
+					Next
+				</Button>
+			</div>
 		</>
 	);
 }

@@ -25,7 +25,10 @@ export default async function PokemonPage({
 				style={{ width: "400px", height: "400px", position: "relative" }}
 			>
 				<PokemonImage
-					image={pokemonDetails.sprites.other["official-artwork"].front_default}
+					image={
+						pokemonDetails.sprites.other?.["official-artwork"]?.front_default ||
+						"https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png"
+					}
 					name={pokemonName}
 				/>
 			</div>
