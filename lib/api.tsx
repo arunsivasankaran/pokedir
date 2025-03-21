@@ -25,13 +25,6 @@ export async function getManyPokemon(input: {
 			name: string;
 			url: string;
 		}) => {
-			if (pokemon.url === null) {
-				return {
-					name: pokemon.name,
-					url: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png",
-					img: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png",
-				};
-			}
 			const id = pokemon.url
 				.split("https://pokeapi.co/api/v2/pokemon/")[1]
 				.split("/")[0];
