@@ -1,7 +1,10 @@
 # PokeDir
 
+Deployed [here](https://pokedir-five.vercel.app/)
+
 ## TODO
 
+- [API rate limit]
 - [] caching - need to investigate default cache setting and possibly update some settings
 - [] tests
 - [] investigate SSR and SSG benefits
@@ -12,6 +15,7 @@
 - [shandcn/ui](https://ui.shadcn.com/)
 - React
 - Typescript
+- Tailwind
 
 ## Setup
 

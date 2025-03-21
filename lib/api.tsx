@@ -17,6 +17,7 @@ export async function getManyPokemon(input: {
 }): Promise<ManyPokemonResponse> {
 	const response = await fetch(
 		`https://pokeapi.co/api/v2/pokemon?limit=${input.limit}&offset=${input.offset}`,
+		{ cache: "force-cache" },
 	);
 	const data = await response.json();
 
@@ -42,7 +43,9 @@ export async function getManyPokemon(input: {
 }
 
 export async function getPokemon(name: string): Promise<PokemonDetail> {
-	const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+	const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
+		cache: "force-cache",
+	});
 	const data = await response.json();
 	return data;
 }

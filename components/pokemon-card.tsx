@@ -14,18 +14,21 @@ export function PokemonCard({ name, img }: PokemonCardProps) {
 		<Link
 			href={name}
 			key={`${name}Card`}
-			className="rounded-lg border border-transparent m-3 px-20 py-20 transition-colors dark:border-gray-500 hover:border-gray-300 hover:dark:bg-neutral-800/30"
+			className="w-80 h-80 rounded-lg border border-transparent m-3 px-20 py-20 transition-colors dark:border-gray-500 hover:border-gray-300 hover:dark:bg-neutral-800/30"
 		>
-			<h2 className={"text text-center font-semibold"}>{name}</h2>
-			<ImageWithFallback
-				src={img}
-				fallbackSrc="/not-found.svg"
-				alt={name}
-				height="100"
-				width="100"
-				style={{ alignSelf: "center" }}
-				className="center"
-			/>
+			<h2 className={"text-sm text-center font-semibold text-nowrap"}>
+				{name}
+			</h2>
+			<div className="pt-10 flex justify-center">
+				<ImageWithFallback
+					src={img}
+					fallbackSrc="/not-found.svg"
+					alt={name}
+					height="100"
+					width="100"
+					style={{ alignSelf: "center" }}
+				/>
+			</div>
 		</Link>
 	);
 }
