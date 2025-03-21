@@ -3,9 +3,9 @@ import { getManyPokemon } from "@/lib/api";
 
 export default async function Home() {
 	const manyPokemon = await getManyPokemon({
-    limit: 24,
-    offset: 0,
-  });
+		limit: 24,
+		offset: 0,
+	});
 
 	return <PokemonGrid manyPokemon={manyPokemon.results} />;
 }
