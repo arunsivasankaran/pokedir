@@ -1,12 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Label } from "./ui/label";
 import { PokemonCard } from "./pokemon-card";
-import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { getManyPokemon, type ManyPokemonResponse } from "@/lib/api";
-// import { parseAsInteger, useQueryState } from "nuqs";
-import { useSearchParams } from "next/navigation";
+import { getManyPokemon } from "@/lib/api";
 interface PokemonGridProps {
 	manyPokemon: { name: string; url: string; img: string }[];
 }

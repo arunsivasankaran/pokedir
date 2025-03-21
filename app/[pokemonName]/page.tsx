@@ -9,11 +9,16 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { getPokemon } from "@/lib/api";
+import type React from "react";
 
-export default async function PokemonPage({
-	params,
-}: { params: { pokemonName: string } }) {
-	const pokemonName = (await params).pokemonName;
+interface PokemonPageProps {
+	pokemonName: string;
+}
+
+export default async function PokemonPage(props: {
+	params: Promise<PokemonPageProps>;
+}) {
+	const pokemonName = (await props.params).pokemonName;
 	const pokemonDetails = await getPokemon(pokemonName);
 
 	return (

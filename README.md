@@ -1,9 +1,27 @@
 # PokeDir
 
+## TODO
+
+- [] caching
+- [] tests
+- [] server side rendering
+- [] static side generation
+
+## Stack
+
+- Next.js
+- [shandcn/ui](https://ui.shadcn.com/)
+- React
+- Typescript
+
 ## Setup
 
 Install [nodejs and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-Tested on node version - 20.14 and npm version - 11.2.0
+
+Tested on...
+
+node - 20.14
+npm  - 11.2.0
 
 ## Getting Started
 
