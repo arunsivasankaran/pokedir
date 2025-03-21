@@ -3,7 +3,7 @@ import { getManyPokemon } from "@/lib/api";
 
 export default async function Home() {
 	const manyPokemon = await getManyPokemon({
-		limit: 24,
+		limit: 12,
 		offset: 0,
 	});
 

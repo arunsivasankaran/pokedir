@@ -14,17 +14,17 @@ interface PokemonGridProps {
 export function PokemonGrid({ manyPokemon }: PokemonGridProps) {
 	const [pokemon, setPokemon] =
 		useState<{ name: string; url: string; img: string }[]>(manyPokemon);
-	const [offset, setOffset] = useState<number>(24);
+	const [offset, setOffset] = useState<number>(12);
 
 	useEffect(() => {
 		const fetchManyPokemon = async () => {
 			console.log({
-				limit: 8,
+				limit: 12,
 				offset: offset,
 			});
 
 			const manyMorePokemon = await getManyPokemon({
-				limit: 8,
+				limit: 12,
 				offset: offset,
 			});
 
@@ -36,10 +36,7 @@ export function PokemonGrid({ manyPokemon }: PokemonGridProps) {
 
 	return (
 		<>
-			<div>
-				<h1 className="text-4xl py-6 text-center pb-10">Find your Pokemon</h1>
-			</div>
-			<div className="pt-10 mb-32 grid text-center lg:mb-0 m-3 lg:grid-cols-8 lg:text-left">
+			<div className="pt-10 mb-32 grid lg:mb-3 lg:grid-cols-4 lg:text-center">
 				{pokemon.map((pokemon) => (
 					<PokemonCard
 						name={pokemon.name}
@@ -49,10 +46,10 @@ export function PokemonGrid({ manyPokemon }: PokemonGridProps) {
 					/>
 				))}
 			</div>
-			<Button type="submit" onClick={() => setOffset(offset + 24)}>
+			<Button type="submit" onClick={() => setOffset(offset + 12)}>
 				Back
 			</Button>
-			<Button type="submit" onClick={() => setOffset(offset - 24)}>
+			<Button type="submit" onClick={() => setOffset(offset - 12)}>
 				Next
 			</Button>
 		</>
