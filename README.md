@@ -4,7 +4,7 @@ Deployed [here](https://pokedir-five.vercel.app/)
 
 ## TODO
 
-- [API rate limit]
+- [] API rate limit
 - [] caching - need to investigate default cache setting and possibly update some settings
 - [] tests
 - [] investigate SSR and SSG benefits
@@ -16,6 +16,11 @@ Deployed [here](https://pokedir-five.vercel.app/)
 - React
 - Typescript
 - Tailwind
+
+## External Deps
+
+- https://pokeapi.co/
+- images hosted on github
 
 ## Setup
 
